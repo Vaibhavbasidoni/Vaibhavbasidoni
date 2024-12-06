@@ -1,52 +1,39 @@
-name: Metrics Generate
+name: MAIN
 
 on:
-  # Run automatically every 24 hours
   schedule:
     - cron: "0 0 * * *"
   
-  # Allows manual workflow trigger
   workflow_dispatch:
-  
-  # Run on pushes to main branches
-  push:
-    branches:
-      - main
-      - master
 
 jobs:
-  github-metrics:
+  profile-metrics:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
-      - uses: lowlighter/metrics@latest
+      - uses: actions/checkout@v3
+
+      # Generate GitHub Profile Summary Cards
+      - name: Generate GitHub Profile Summary Cards
+        uses: vn7n24fzkq/github-profile-summary-cards@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          
-          # Options
-          user: Vaibhavbasidoni
-          template: classic
-          base: header, activity, community, repositories, metadata
-          config_timezone: Asia/Kolkata
-          
-          # Additional plugins
-          plugin_achievements: yes
-          plugin_achievements_display: detailed
-          plugin_achievements_threshold: C
-          
-          plugin_languages: yes
-          plugin_languages_indepth: yes
-          plugin_languages_analysis_timeout: 15
-          
-          plugin_habits: yes
-          plugin_habits_from: 200
-          plugin_habits_days: 14
-          
-          plugin_stargazers: yes
-          plugin_stargazers_charts: yes
-          
-          plugin_traffic: yes
-          
-          plugin_repositories: yes
-          plugin_repositories_featured: Vaibhavbasidoni/Vaibhavbasidoni
+          USERNAME: ${{ github.repository_owner }}
+
+      # Generate Streak Stats
+      - name: Generate GitHub Streak Stats
+        uses: DenverCoder1/github-readme-streak-stats@master
+        with:
+          github_user: ${{ github.repository_owner }}
+
+      # Optional: Commit and Push Changes
+      - name: Commit and Push Changes
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Update GitHub profile metrics" || exit 0
+          git push
