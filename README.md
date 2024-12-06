@@ -1,7 +1,6 @@
 # 👋 Hi there! I'm Vaibhav Basidoni
 
-## 🌐 Socials:
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/Vaibhs_7777) 
+## 🌐 Socials: 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vaibhav-basidoni-7b648a23b/)
 [![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=flat&logo=firefox&logoColor=white)](#)
 [![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:your.email@example.com)
@@ -49,8 +48,6 @@
 ### 🌐 Language Insights
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Vaibhavbasidoni&theme=radical&layout=compact&langs_count=10)
 
-### 📈 Contribution Graph
-![GitHub Contribution Graph](https://activity-graph.herokuapp.com/graph?username=Vaibhavbasidoni&theme=react-dark&bg_color=20232a&hide_border=true&line=58a6ff&color=58a6ff)
 
 ## 📈 Profile Views
 [![](https://visitcount.itsvg.in/api?id=Vaibhavbasidoni&icon=5&color=6)](https://visitcount.itsvg.in)
