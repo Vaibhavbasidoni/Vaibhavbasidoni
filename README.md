@@ -1,12 +1,19 @@
-## 📊 My GitHub Insights
+## 📊 My GitHub Journey
 
-![Metrics](https://metrics.lecoq.io/Vaibhavbasidoni?template=classic&base.header=0&base.activity=0&base.community=0&base.repositories=0&base.metadata=0&achievements=1&languages=1&habits=1&stargazers=1&traffic=1&repositories=1&repositories.featured=Vaibhavbasidoni&config.timezone=Asia%2FKolkata)
+### 🚀 Profile Overview
+![GitHub Profile Summary](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Vaibhavbasidoni&theme=radical)
 
-### 🏆 Achievements
-- Discover my GitHub journey milestones and accomplishments
+### 🏆 GitHub Achievements
+![GitHub Trophies](https://github-profile-trophy.vercel.app/?username=Vaibhavbasidoni&theme=radical&no-frame=true&row=1&column=7)
 
-### 💻 Coding Habits
-- Insights into my coding patterns and development rhythm
+### 💻 Coding Stats
+<div align="center">
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Vaibhavbasidoni&show_icons=true&theme=radical&include_all_commits=true&count_private=true"/>
+  <img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=Vaibhavbasidoni&theme=radical"/>
+</div>
 
-### 🌐 Language Breakdown
-- Detailed analysis of programming languages I use
+### 🌐 Language Insights
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Vaibhavbasidoni&theme=radical&layout=compact&langs_count=10)
+
+### 📈 Contribution Graph
+![GitHub Contribution Graph](https://activity-graph.herokuapp.com/graph?username=Vaibhavbasidoni&theme=react-dark&bg_color=20232a&hide_border=true&line=58a6ff&color=58a6ff)
