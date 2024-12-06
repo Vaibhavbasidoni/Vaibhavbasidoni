@@ -1,21 +1,30 @@
 name: MAIN
 
 on:
+  # Run automatically every 24 hours
   schedule:
     - cron: "0 0 * * *"
   
+  # Allow manual workflow dispatch
   workflow_dispatch:
+  
+  # Trigger on push to main branches
+  push:
+    branches:
+      - main
+      - master
 
 jobs:
-  profile-metrics:
+  generate-metrics:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
+    
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      # Generate GitHub Profile Summary Cards
+      # GitHub Profile Summary Cards
       - name: Generate GitHub Profile Summary Cards
         uses: vn7n24fzkq/github-profile-summary-cards@master
         env:
@@ -23,17 +32,32 @@ jobs:
         with:
           USERNAME: ${{ github.repository_owner }}
 
-      # Generate Streak Stats
+      # GitHub Streak Stats
       - name: Generate GitHub Streak Stats
         uses: DenverCoder1/github-readme-streak-stats@master
         with:
           github_user: ${{ github.repository_owner }}
 
-      # Optional: Commit and Push Changes
-      - name: Commit and Push Changes
+      # GitHub Stats
+      - name: Generate GitHub Stats
+        uses: anuraghazra/github-readme-stats@master
+        with:
+          username: Vaibhavbasidoni
+          show_icons: true
+          theme: radical
+
+      # Contribution Graph
+      - name: Generate Contribution Graph
+        uses: Ashutosh00710/github-readme-activity-graph@master
+        with:
+          username: Vaibhavbasidoni
+          theme: react
+
+      # Commit and Push Changes
+      - name: Commit and Push Updates
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
           git add .
           git commit -m "Update GitHub profile metrics" || exit 0
           git push
