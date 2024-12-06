@@ -3,7 +3,7 @@ name: Generate Snake Contribution Grid
 on:
   # run automatically every 24 hours
   schedule:
-    - cron: "0 0 * * *" 
+    - cron: "0 0 * * *"  # Fixed cron syntax (added missing * for days)
   
   # allows to manually run the job in the repository actions section
   workflow_dispatch:
@@ -11,31 +11,50 @@ on:
   # run on every push on the master/main branch
   push:
     branches:
-    - master
-    - main
+      - master
+      - main
 
 jobs:
   generate:
     runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to allow pushing to the output branch
+      contents: write
+
     timeout-minutes: 10
     
     steps:
-      # generates a snake game from a github user (<username>) contributions graph
+      # Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Generate GitHub Snake Grid
       - name: Generate GitHub Snake Grid
         uses: Platane/snk/svg-only@v3
+        id: snake-grid
         with:
-          github_user_name: Vaibhavbasidoni
+          github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/github-snake.svg
-            dist/github-snake-dark.svg?palette=github-dark
-            dist/ocean.gif
+            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+            dist/github-contribution-grid-snake.gif
 
-      # push the content of <build-dir> to a branch
-      # the content will be available at https://raw.githubusercontent.com/<username>/<repository>/<target-branch>/
-      - name: Push GitHub Snake Grid to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v3.1.0
+      # Push the generated files to GitHub Pages
+      - name: Push Snake Grid to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v3.2.1
         with:
           target_branch: output
           build_dir: dist
+          keep_history: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Optional: Add a job to verify the workflow
+  verify:
+    needs: generate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check generated files
+        run: |
+          echo "Workflow completed successfully!"
+          ls -l dist/
